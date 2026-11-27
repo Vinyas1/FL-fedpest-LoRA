@@ -20,7 +20,8 @@ federated:
   clients: [nih, chexpert, vindr]
 
 data:
-  labels: [Cardiomegaly, Effusion, Pneumothorax, Atelectasis, Consolidation, Edema]
+  # 5 labels common to all three datasets. Edema dropped: VinDr-CXR lacks it.
+  labels: [Cardiomegaly, Effusion, Pneumothorax, Atelectasis, Consolidation]
   images_per_client: 3000
   frontal_only: true
   batch_size: 64
