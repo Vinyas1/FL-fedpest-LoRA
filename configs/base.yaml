@@ -1,0 +1,34 @@
+# Base config. Every experiment is this file with a few lines changed.
+# Run with: python scripts/run.py --config configs/<name>.yaml
+
+seed: 0
+device: cuda                     # cpu for local smoke tests
+
+model:
+  backbone: hf-hub:microsoft/BiomedCLIP-PubMedBERT_256-vit_base_patch16_224
+  lora_rank: 8
+  lora_alpha: 16
+  lora_dropout: 0.05
+  # which attention projections to adapt
+  target_modules: [q_proj, k_proj, v_proj, out_proj]
+  factorization: shared_b        # shared_b | independent_local  (<- key ablation)
+
+federated:
+  method: global_local           # zero_shot | isolated | global_only | global_local
+  rounds: 20
+  local_epochs: 1
+  clients: [nih, chexpert, vindr]
+
+data:
+  labels: [Cardiomegaly, Effusion, Pneumothorax, Atelectasis, Consolidation, Edema]
+  images_per_client: 3000
+  frontal_only: true
+  batch_size: 64
+
+optim:
+  lr: 5.0e-4
+  weight_decay: 0.0
+
+eval:
+  bootstrap_n: 1000
+  seeds: [0, 1, 2]

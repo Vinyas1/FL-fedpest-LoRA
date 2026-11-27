@@ -1,0 +1,24 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.ipynb_checkpoints/
+
+# Secrets — NEVER commit
+kaggle.json
+*.pem
+.env
+
+# Data & artifacts (too big / credentialed)
+data/
+*.csv.gz
+checkpoints/
+outputs/
+runs/
+*.pt
+*.pth
+embeddings/
+*.npy
+wandb/

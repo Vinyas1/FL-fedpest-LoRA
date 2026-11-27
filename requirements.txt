@@ -1,0 +1,17 @@
+# Core
+torch>=2.0
+open_clip_torch>=2.24.0
+peft>=0.11.0
+transformers>=4.40.0
+
+# Data / metrics
+pandas
+numpy
+scikit-learn
+pillow
+pyyaml
+tqdm
+
+# BiomedCLIP weights come from HuggingFace hub:
+#   microsoft/BiomedCLIP-PubMedBERT_256-vit_base_patch16_224
+huggingface_hub
