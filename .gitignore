@@ -22,3 +22,7 @@ runs/
 embeddings/
 *.npy
 wandb/
+
+# Kaggle pulled outputs
+kaggle*/out*/
+kaggle/out*/
