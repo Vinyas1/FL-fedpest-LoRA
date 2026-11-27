@@ -1,0 +1,17 @@
+{
+  "id": "vinyas19/fedpest-data-inspect",
+  "title": "fedpest-data-inspect",
+  "code_file": "inspect_data.py",
+  "language": "python",
+  "kernel_type": "script",
+  "is_private": true,
+  "enable_gpu": false,
+  "enable_internet": false,
+  "dataset_sources": [
+    "nih-chest-xrays/data",
+    "ashery/chexpert",
+    "hiuvquc/vindr-cxr-csv"
+  ],
+  "competition_sources": [],
+  "kernel_sources": []
+}

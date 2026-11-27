@@ -1,0 +1,78 @@
+[{"stream_name":"stdout","time":2.902763872,"data":"=== TREE (depth-limited) ===\n"}
+,{"stream_name":"stdout","time":2.902879936,"data":"/kaggle/input  | dirs=['datasets'] | files=[]\n"}
+,{"stream_name":"stdout","time":2.903714119,"data":"  /kaggle/input/datasets  | dirs=['hiuvquc', 'ashery', 'nih-chest-xrays'] | files=[]\n"}
+,{"stream_name":"stdout","time":2.9037418759999998,"data":"    /kaggle/input/datasets/hiuvquc  | dirs=['vindr-cxr-csv'] | files=[]\n"}
+,{"stream_name":"stdout","time":3.056418355,"data":"      /kaggle/input/datasets/hiuvquc/vindr-cxr-csv  | dirs=[] | files=['train.csv']\n"}
+,{"stream_name":"stdout","time":3.056454307,"data":"    /kaggle/input/datasets/ashery  | dirs=['chexpert'] | files=[]\n"}
+,{"stream_name":"stdout","time":3.187603615,"data":"      /kaggle/input/datasets/ashery/chexpert  | dirs=['train', 'valid'] | files=['train.csv', 'valid.csv']\n"}
+,{"stream_name":"stdout","time":5.757613234,"data":"        /kaggle/input/datasets/ashery/chexpert/train  | dirs=['patient00001', 'patient00002', 'patient00003', 'patient00004', 'patient00005', 'patient00006', 'patient00007', 'patient00008'] | files=[]\n"}
+,{"stream_name":"stdout","time":5.794412945,"data":"        /kaggle/input/datasets/ashery/chexpert/valid  | dirs=['patient64541', 'patient64542', 'patient64543', 'patient64544', 'patient64545', 'patient64546', 'patient64547', 'patient64548'] | files=[]\n"}
+,{"stream_name":"stdout","time":5.794458375,"data":"    /kaggle/input/datasets/nih-chest-xrays  | dirs=['data'] | files=[]\n"}
+,{"stream_name":"stdout","time":5.936225923,"data":"      /kaggle/input/datasets/nih-chest-xrays/data  | dirs=['images_001', 'images_002', 'images_003', 'images_004', 'images_005', 'images_006', 'images_007', 'images_008'] | files=['BBox_List_2017.csv', 'Data_Entry_2017.csv']\n"}
+,{"stream_name":"stdout","time":5.956938297,"data":"        /kaggle/input/datasets/nih-chest-xrays/data/images_001  | dirs=['images'] | files=[]\n"}
+,{"stream_name":"stdout","time":5.984277635,"data":"        /kaggle/input/datasets/nih-chest-xrays/data/images_002  | dirs=['images'] | files=[]\n"}
+,{"stream_name":"stdout","time":6.016184742,"data":"        /kaggle/input/datasets/nih-chest-xrays/data/images_003  | dirs=['images'] | files=[]\n"}
+,{"stream_name":"stdout","time":6.038311572,"data":"        /kaggle/input/datasets/nih-chest-xrays/data/images_004  | dirs=['images'] | files=[]\n"}
+,{"stream_name":"stdout","time":6.063362983,"data":"        /kaggle/input/datasets/nih-chest-xrays/data/images_005  | dirs=['images'] | files=[]\n"}
+,{"stream_name":"stdout","time":6.081060676,"data":"        /kaggle/input/datasets/nih-chest-xrays/data/images_006  | dirs=['images'] | files=[]\n"}
+,{"stream_name":"stdout","time":6.109941622,"data":"        /kaggle/input/datasets/nih-chest-xrays/data/images_007  | dirs=['images'] | files=[]\n"}
+,{"stream_name":"stdout","time":6.136483068,"data":"        /kaggle/input/datasets/nih-chest-xrays/data/images_008  | dirs=['images'] | files=[]\n"}
+,{"stream_name":"stdout","time":6.161924132,"data":"        /kaggle/input/datasets/nih-chest-xrays/data/images_009  | dirs=['images'] | files=[]\n"}
+,{"stream_name":"stdout","time":6.186941553,"data":"        /kaggle/input/datasets/nih-chest-xrays/data/images_010  | dirs=['images'] | files=[]\n"}
+,{"stream_name":"stdout","time":6.20878788,"data":"        /kaggle/input/datasets/nih-chest-xrays/data/images_011  | dirs=['images'] | files=[]\n"}
+,{"stream_name":"stdout","time":6.231813871,"data":"        /kaggle/input/datasets/nih-chest-xrays/data/images_012  | dirs=['images'] | files=[]\n"}
+,{"stream_name":"stdout","time":6.23185112,"data":"\n"}
+,{"stream_name":"stdout","time":6.231856004,"data":"=== CSVs FOUND ===\n"}
+,{"stream_name":"stdout","time":6.232164904,"data":"   /kaggle/input/datasets/hiuvquc/vindr-cxr-csv/train.csv (4541 KB)\n"}
+,{"stream_name":"stdout","time":6.232512371,"data":"   /kaggle/input/datasets/ashery/chexpert/train.csv (23931 KB)\n"}
+,{"stream_name":"stdout","time":6.232681403,"data":"   /kaggle/input/datasets/ashery/chexpert/valid.csv (32 KB)\n"}
+,{"stream_name":"stdout","time":6.232912961,"data":"   /kaggle/input/datasets/nih-chest-xrays/data/BBox_List_2017.csv (90 KB)\n"}
+,{"stream_name":"stdout","time":6.233071635,"data":"   /kaggle/input/datasets/nih-chest-xrays/data/Data_Entry_2017.csv (7676 KB)\n"}
+,{"stream_name":"stdout","time":6.233084831,"data":"\n"}
+,{"stream_name":"stdout","time":6.233089364,"data":"==========================================================================\n"}
+,{"stream_name":"stdout","time":6.233093599,"data":"CSV: /kaggle/input/datasets/hiuvquc/vindr-cxr-csv/train.csv\n"}
+,{"stream_name":"stdout","time":6.470685705,"data":"  columns: ['image_id', 'class_name', 'class_id', 'rad_id', 'x_min', 'y_min', 'x_max', 'y_max']\n"}
+,{"stream_name":"stdout","time":6.470723643,"data":"  sampled rows: 50000\n"}
+,{"stream_name":"stdout","time":6.488061623,"data":"  \u003e\u003e 'class_name' vocab: ['Aortic enlargement', 'Atelectasis', 'Calcification', 'Cardiomegaly', 'Consolidation', 'ILD', 'Infiltration', 'Lung Opacity', 'No finding', 'Nodule/Mass', 'Other lesion', 'Pleural effusion', 'Pleural thickening', 'Pneumothorax', 'Pulmonary fibrosis']\n"}
+,{"stream_name":"stdout","time":6.488383919,"data":"  first row: {'image_id': '50a418190bc3fb1ef1633bf9678929b3', 'class_name': 'No finding', 'class_id': 14, 'rad_id': 'R11', 'x_min': nan, 'y_min': nan, 'x_max': nan, 'y_max': nan}\n"}
+,{"stream_name":"stdout","time":6.488398644,"data":"\n"}
+,{"stream_name":"stdout","time":6.488402537,"data":"==========================================================================\n"}
+,{"stream_name":"stdout","time":6.488406552,"data":"CSV: /kaggle/input/datasets/ashery/chexpert/train.csv\n"}
+,{"stream_name":"stdout","time":6.839165476,"data":"  columns: ['Path', 'Sex', 'Age', 'Frontal/Lateral', 'AP/PA', 'No Finding', 'Enlarged Cardiomediastinum', 'Cardiomegaly', 'Lung Opacity', 'Lung Lesion', 'Edema', 'Consolidation', 'Pneumonia', 'Atelectasis', 'Pneumothorax', 'Pleural Effusion', 'Pleural Other', 'Fracture', 'Support Devices']\n"}
+,{"stream_name":"stdout","time":6.839205947,"data":"  sampled rows: 50000\n"}
+,{"stream_name":"stdout","time":6.839608703,"data":"  \u003e\u003e CheXpert-style label columns: ['Cardiomegaly', 'Edema', 'Consolidation', 'Pneumonia', 'Atelectasis', 'Pneumothorax', 'Pleural Effusion', 'Lung Opacity', 'No Finding']\n"}
+,{"stream_name":"stdout","time":6.847691462,"data":"  \u003e\u003e 'Frontal/Lateral' counts: {'Frontal': 39622, 'Lateral': 10378}\n"}
+,{"stream_name":"stdout","time":6.851536275,"data":"  \u003e\u003e 'AP/PA' counts: {'AP': 29416, 'PA': 10203, 'LL': 3}\n"}
+,{"stream_name":"stdout","time":6.851738032,"data":"  first row: {'Path': 'CheXpert-v1.0-small/train/patient00001/study1/view1_frontal.jpg', 'Sex': 'Female', 'Age': 68, 'Frontal/Lateral': 'Frontal', 'AP/PA': 'AP', 'No Finding': 1.0, 'Enlarged Cardiomediastinum': nan, 'Cardiomegaly': nan, 'Lung Opacity': nan, 'Lung Lesion': nan, 'Edema': nan, 'Consolidation': nan, 'Pneumonia': nan, 'Atelectasis': nan, 'Pneumothorax': 0.0, 'Pleural Effusion': nan, 'Pleural Other': nan, 'Fracture': nan, 'Support Devices': 1.0}\n"}
+,{"stream_name":"stdout","time":6.851755747,"data":"\n"}
+,{"stream_name":"stdout","time":6.851760286,"data":"==========================================================================\n"}
+,{"stream_name":"stdout","time":6.851764683,"data":"CSV: /kaggle/input/datasets/ashery/chexpert/valid.csv\n"}
+,{"stream_name":"stdout","time":6.945889216,"data":"  columns: ['Path', 'Sex', 'Age', 'Frontal/Lateral', 'AP/PA', 'No Finding', 'Enlarged Cardiomediastinum', 'Cardiomegaly', 'Lung Opacity', 'Lung Lesion', 'Edema', 'Consolidation', 'Pneumonia', 'Atelectasis', 'Pneumothorax', 'Pleural Effusion', 'Pleural Other', 'Fracture', 'Support Devices']\n"}
+,{"stream_name":"stdout","time":6.945950187,"data":"  sampled rows: 234\n"}
+,{"stream_name":"stdout","time":6.945971478,"data":"  \u003e\u003e CheXpert-style label columns: ['Cardiomegaly', 'Edema', 'Consolidation', 'Pneumonia', 'Atelectasis', 'Pneumothorax', 'Pleural Effusion', 'Lung Opacity', 'No Finding']\n"}
+,{"stream_name":"stdout","time":6.946988927,"data":"  \u003e\u003e 'Frontal/Lateral' counts: {'Frontal': 202, 'Lateral': 32}\n"}
+,{"stream_name":"stdout","time":6.947633273,"data":"  \u003e\u003e 'AP/PA' counts: {'AP': 169, 'PA': 33}\n"}
+,{"stream_name":"stdout","time":6.947893914,"data":"  first row: {'Path': 'CheXpert-v1.0-small/valid/patient64541/study1/view1_frontal.jpg', 'Sex': 'Male', 'Age': 73, 'Frontal/Lateral': 'Frontal', 'AP/PA': 'AP', 'No Finding': 0.0, 'Enlarged Cardiomediastinum': 1.0, 'Cardiomegaly': 1.0, 'Lung Opacity': 1.0, 'Lung Lesion': 0.0, 'Edema': 0.0, 'Consolidation': 0.0, 'Pneumonia': 0.0, 'Atelectasis': 0.0, 'Pneumothorax': 0.0, 'Pleural Effusion': 0.0, 'Pleural Other': 0.0, 'Fracture': 0.0, 'Support Devices': 0.0}\n"}
+,{"stream_name":"stdout","time":6.947923932,"data":"\n"}
+,{"stream_name":"stdout","time":6.947928641,"data":"==========================================================================\n"}
+,{"stream_name":"stdout","time":6.947933284,"data":"CSV: /kaggle/input/datasets/nih-chest-xrays/data/BBox_List_2017.csv\n"}
+,{"stream_name":"stdout","time":6.979473427,"data":"  columns: ['Image Index', 'Finding Label', 'Bbox [x', 'y', 'w', 'h]', 'Unnamed: 6', 'Unnamed: 7', 'Unnamed: 8']\n"}
+,{"stream_name":"stdout","time":6.979513345,"data":"  sampled rows: 984\n"}
+,{"stream_name":"stdout","time":6.979861113,"data":"  first row: {'Image Index': '00013118_008.png', 'Finding Label': 'Atelectasis', 'Bbox [x': 225.084745762712, 'y': 547.019216763771, 'w': 86.7796610169491, 'h]': 79.1864406779661, 'Unnamed: 6': nan, 'Unnamed: 7': nan, 'Unnamed: 8': nan}\n"}
+,{"stream_name":"stdout","time":6.979876767,"data":"\n"}
+,{"stream_name":"stdout","time":6.979881157,"data":"==========================================================================\n"}
+,{"stream_name":"stdout","time":6.979885449,"data":"CSV: /kaggle/input/datasets/nih-chest-xrays/data/Data_Entry_2017.csv\n"}
+,{"stream_name":"stdout","time":7.161040372,"data":"  columns: ['Image Index', 'Finding Labels', 'Follow-up #', 'Patient ID', 'Patient Age', 'Patient Gender', 'View Position', 'OriginalImage[Width', 'Height]', 'OriginalImagePixelSpacing[x', 'y]', 'Unnamed: 11']\n"}
+,{"stream_name":"stdout","time":7.161082601,"data":"  sampled rows: 50000\n"}
+,{"stream_name":"stdout","time":7.193528413,"data":"  \u003e\u003e NIH Finding-Labels vocab: ['Atelectasis', 'Cardiomegaly', 'Consolidation', 'Edema', 'Effusion', 'Emphysema', 'Fibrosis', 'Hernia', 'Infiltration', 'Mass', 'No Finding', 'Nodule', 'Pleural_Thickening', 'Pneumonia', 'Pneumothorax']\n"}
+,{"stream_name":"stdout","time":7.197246338,"data":"  \u003e\u003e 'View Position' counts: {'PA': 29977, 'AP': 20023}\n"}
+,{"stream_name":"stdout","time":7.197420192,"data":"  first row: {'Image Index': '00000001_000.png', 'Finding Labels': 'Cardiomegaly', 'Follow-up #': 0, 'Patient ID': 1, 'Patient Age': 58, 'Patient Gender': 'M', 'View Position': 'PA', 'OriginalImage[Width': 2682, 'Height]': 2749, 'OriginalImagePixelSpacing[x': 0.143, 'y]': 0.143, 'Unnamed: 11': nan}\n"}
+,{"stream_name":"stdout","time":7.197438806,"data":"\n"}
+,{"stream_name":"stdout","time":7.197443068,"data":"[inspect] done.\n"}
+,{"stream_name":"stderr","time":10.166410032,"data":"/usr/local/lib/python3.13/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":10.166454088,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":10.495184848,"data":"/usr/local/lib/python3.13/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":10.495222212,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":12.35372568,"data":"[NbConvertApp] Converting notebook __script__.ipynb to html\n"}
+,{"stream_name":"stderr","time":13.578851337,"data":"[NbConvertApp] Writing 285082 bytes to __results__.html\n"}
+]
