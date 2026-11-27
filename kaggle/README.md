@@ -18,8 +18,8 @@ The notebook/kernel is just 3 cells:
 
 ```python
 # cell 1 — get the code
-!git clone https://github.com/<you>/fed-pest.git
-%cd fed-pest
+!git clone https://github.com/Vinyas1/FL-fedpest-LoRA.git
+%cd FL-fedpest-LoRA
 !pip install -q -r requirements.txt
 
 # cell 2 — Phase 0 smoke test (run this FIRST)
