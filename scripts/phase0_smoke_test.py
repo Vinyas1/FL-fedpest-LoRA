@@ -8,13 +8,15 @@ Proves the environment works end to end:
 Run (Kaggle or any machine with the deps):
     python scripts/phase0_smoke_test.py
 
-It downloads a tiny public sample image if none is given, so it needs no
-dataset attached. This is the thing to run FIRST on Kaggle's T4.
+Self-contained: with no image path it synthesizes one in-memory, so it needs
+no dataset attached and no network beyond the model download. This is the thing
+to run FIRST on Kaggle's T4. (Pass a real image path as argv[1] to use one.)
 """
 from __future__ import annotations
-import sys, io, urllib.request
+import sys
 from pathlib import Path
 
+import numpy as np
 import torch
 from PIL import Image
 
@@ -24,17 +26,17 @@ from fedpest.model import load_backbone, embed_image, embed_text, label_prompts
 BACKBONE = "hf-hub:microsoft/BiomedCLIP-PubMedBERT_256-vit_base_patch16_224"
 LABELS = ["Cardiomegaly", "Effusion", "Pneumothorax",
           "Atelectasis", "Consolidation", "Edema"]
-# A public chest X-ray thumbnail (Wikimedia) — just to prove the pipeline runs.
-SAMPLE_URL = ("https://upload.wikimedia.org/wikipedia/commons/thumb/"
-              "c/c8/Chest_Xray_PA_3-8-2010.png/480px-Chest_Xray_PA_3-8-2010.png")
 
 
 def get_sample_image(path: str | None) -> Image.Image:
     if path:
         return Image.open(path).convert("RGB")
-    print(f"[smoke] downloading sample image ...")
-    raw = urllib.request.urlopen(SAMPLE_URL, timeout=30).read()
-    return Image.open(io.BytesIO(raw)).convert("RGB")
+    # Synthetic grayscale image — scores are meaningless, we only prove the
+    # image->embedding path runs. No external fetch, so nothing to be blocked.
+    print("[smoke] synthesizing a test image (no download) ...")
+    rng = np.random.default_rng(0)
+    arr = (rng.normal(0.5, 0.15, size=(224, 224)).clip(0, 1) * 255).astype("uint8")
+    return Image.fromarray(arr).convert("RGB")
 
 
 def main():
