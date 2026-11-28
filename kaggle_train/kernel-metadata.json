@@ -1,0 +1,18 @@
+{
+  "id": "vinyas19/fedpest-train-single",
+  "title": "fedpest-train-single",
+  "code_file": "run_train_single.py",
+  "language": "python",
+  "kernel_type": "script",
+  "is_private": true,
+  "enable_gpu": true,
+  "enable_internet": true,
+  "dataset_sources": [
+    "nih-chest-xrays/data",
+    "ashery/chexpert",
+    "hiuvquc/vindr-cxr-csv",
+    "sonnlp/vindr-cxr-images"
+  ],
+  "competition_sources": [],
+  "kernel_sources": []
+}

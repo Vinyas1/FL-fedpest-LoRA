@@ -9,8 +9,8 @@ model:
   lora_rank: 8
   lora_alpha: 16
   lora_dropout: 0.05
-  # which attention projections to adapt
-  target_modules: [q_proj, k_proj, v_proj, out_proj]
+  # vision attention fused-qkv Linear (timm ViT); confirmed by kaggle_introspect
+  target_modules: [qkv]
   factorization: shared_b        # shared_b | independent_local  (<- key ablation)
 
 federated:

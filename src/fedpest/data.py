@@ -153,7 +153,25 @@ def build_client_frame(client: str, cfg, roots: dict | None = None,
     return df
 
 
+def split_train_test(df: pd.DataFrame, test_frac: float = 0.2,
+                     seed: int = 0) -> tuple[pd.DataFrame, pd.DataFrame]:
+    """Deterministic per-client train/test split."""
+    shuffled = df.sample(frac=1.0, random_state=seed).reset_index(drop=True)
+    n_test = int(len(shuffled) * test_frac)
+    test = shuffled.iloc[:n_test].reset_index(drop=True)
+    train = shuffled.iloc[n_test:].reset_index(drop=True)
+    return train, test
+
+
+def build_client_datasets(client: str, cfg, preprocess, roots: dict | None = None,
+                          test_frac: float = 0.2):
+    """Return (train_ds, test_ds) of (image, multi_hot[5]) for one hospital."""
+    df = build_client_frame(client, cfg, roots=roots)
+    train_df, test_df = split_train_test(df, test_frac=test_frac, seed=cfg.seed)
+    return CXRDataset(train_df, preprocess), CXRDataset(test_df, preprocess)
+
+
 def build_client_dataset(client: str, cfg, preprocess, roots: dict | None = None):
-    """Return a torch Dataset of (image, multi_hot[5]) for one hospital."""
+    """Return a single torch Dataset of (image, multi_hot[5]) for one hospital."""
     df = build_client_frame(client, cfg, roots=roots)
     return CXRDataset(df, preprocess)

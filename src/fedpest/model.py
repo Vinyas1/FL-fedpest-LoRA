@@ -50,13 +50,43 @@ def label_prompts(labels: list[str]) -> list[str]:
     return [f"a chest x-ray showing {lab.lower()}" for lab in labels]
 
 
-# --- Phase 3+: LoRA attachment (stub, implemented when Phase 2 baseline runs) ---
+# --- LoRA attachment (Phase 2) ---
 def attach_lora(model, cfg):
-    """Wrap attention projections with LoRA adapters via peft.
+    """Attach LoRA adapters to the vision tower's attention projections.
 
-    TODO (Phase 3): build a LoraConfig(r=cfg.lora_rank, ...), apply to the
-    visual + text transformer blocks named in cfg.target_modules, and return
-    the peft-wrapped model. `factorization == 'independent_local'` is the
-    research switch that gives each client its own A and B (see README).
+    BiomedCLIP's vision tower is a timm ViT-B/16 whose attention uses a single
+    fused `qkv` Linear per block (names like visual.trunk.blocks.N.attn.qkv).
+    We adapt only the vision encoder — hospitals differ in imaging, and the text
+    class prototypes stay fixed — which keeps the method parameter-efficient and
+    the federated story simple. Target names confirmed by kaggle_introspect.
+
+    Only LoRA params end up trainable; everything else stays frozen.
     """
-    raise NotImplementedError("attach_lora: implemented in Phase 3")
+    from peft import LoraConfig, get_peft_model
+
+    targets = list(getattr(cfg.model, "target_modules", ["qkv"]))
+    lconf = LoraConfig(
+        r=cfg.model.lora_rank,
+        lora_alpha=cfg.model.lora_alpha,
+        lora_dropout=cfg.model.lora_dropout,
+        target_modules=targets,
+        bias="none",
+    )
+    peft_model = get_peft_model(model, lconf)
+    return peft_model
+
+
+def lora_state_dict(model) -> dict:
+    """The LoRA tensors only — what crosses the wire in federated rounds."""
+    return {k: v.detach().clone() for k, v in model.state_dict().items()
+            if "lora_" in k}
+
+
+def load_lora_state_dict(model, sd: dict):
+    model.load_state_dict(sd, strict=False)
+
+
+def count_trainable(model) -> tuple[int, int]:
+    trn = sum(p.numel() for p in model.parameters() if p.requires_grad)
+    tot = sum(p.numel() for p in model.parameters())
+    return trn, tot
