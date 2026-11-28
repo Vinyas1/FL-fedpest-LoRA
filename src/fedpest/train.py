@@ -35,12 +35,17 @@ def trainable_params(model):
 
 
 def train_epochs(model, loader, prototypes, logit_scale, device,
-                 epochs=1, lr=5e-4, weight_decay=0.0, log_every=20):
-    """Train the trainable (LoRA) params for a few epochs. Returns mean loss."""
-    model.train()
+                 epochs=1, lr=5e-4, weight_decay=0.0, log_every=20,
+                 on_epoch_end=None):
+    """Train the trainable (LoRA) params. One optimizer spans all epochs.
+
+    on_epoch_end(epoch, mean_loss) is called after each epoch (e.g. to evaluate
+    the test set and record the trajectory). Returns the last mean loss.
+    """
     opt = torch.optim.AdamW(trainable_params(model), lr=lr, weight_decay=weight_decay)
     last = 0.0
     for ep in range(epochs):
+        model.train()
         running, n = 0.0, 0
         for i, (x, y) in enumerate(loader):
             x, y = x.to(device), y.to(device)
@@ -55,6 +60,8 @@ def train_epochs(model, loader, prototypes, logit_scale, device,
                 print(f"    ep{ep} step{i} loss={loss.item():.4f}", flush=True)
         last = running / max(n, 1)
         print(f"    [epoch {ep}] mean loss={last:.4f}", flush=True)
+        if on_epoch_end is not None:
+            on_epoch_end(ep, last)
     return last
 
 
