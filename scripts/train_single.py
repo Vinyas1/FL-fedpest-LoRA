@@ -39,15 +39,17 @@ def main():
     ap.add_argument("--config", default="configs/base.yaml")
     ap.add_argument("--images", type=int, default=None)
     ap.add_argument("--epochs", type=int, default=None)
+    ap.add_argument("--lr", type=float, default=None)
     args = ap.parse_args()
 
     cfg = load_config(args.config)
     if args.images:
         cfg.data.images_per_client = args.images
     epochs = args.epochs or cfg.federated.local_epochs
+    lr = args.lr if args.lr is not None else cfg.optim.lr
     device = "cuda" if torch.cuda.is_available() else "cpu"
     print(f"[single] device={device} images/client={cfg.data.images_per_client} "
-          f"epochs={epochs} rank={cfg.model.lora_rank}")
+          f"epochs={epochs} lr={lr} rank={cfg.model.lora_rank}")
 
     results = {}
     for client in cfg.federated.clients:
