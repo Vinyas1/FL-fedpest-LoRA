@@ -74,15 +74,28 @@ def main():
         y, p = predict(model, test_loader, protos, logit_scale, device)
         res_a = report("A: zero-shot", y, p)
 
-        # Train isolated LoRA
-        train_epochs(model, train_loader, protos, logit_scale, device,
-                     epochs=epochs, lr=cfg.optim.lr, weight_decay=cfg.optim.weight_decay)
+        # Train isolated LoRA, evaluating the test set after every epoch so we can
+        # see the trajectory (does more training help or overfit?).
+        trajectory = []
 
-        # Baseline B: isolated local LoRA
+        def on_epoch_end(ep, mean_loss):
+            yy, pp = predict(model, test_loader, protos, logit_scale, device)
+            m = macro_auroc(yy, pp, SHARED_LABELS)
+            trajectory.append({"epoch": ep, "loss": mean_loss, "macro": m})
+            print(f"    -> test macro AUROC = {m:.4f}", flush=True)
+
+        train_epochs(model, train_loader, protos, logit_scale, device,
+                     epochs=epochs, lr=lr, weight_decay=cfg.optim.weight_decay,
+                     on_epoch_end=on_epoch_end)
+
+        # Baseline B: final-epoch isolated LoRA (+ best epoch for reference)
         y, p = predict(model, test_loader, protos, logit_scale, device)
-        res_b = report("B: isolated-LoRA", y, p)
+        res_b = report("B: isolated-LoRA (final)", y, p)
+        best = max(trajectory, key=lambda t: t["macro"])
+        print(f"  best epoch = {best['epoch']} (macro {best['macro']:.4f})")
 
         results[client] = {"zero_shot": res_a, "isolated_lora": res_b,
+                           "trajectory": trajectory, "best_epoch": best,
                            "n_train": len(train_ds), "n_test": len(test_ds)}
         del model
         torch.cuda.empty_cache()
