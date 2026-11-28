@@ -60,13 +60,19 @@ def train_epochs(model, loader, prototypes, logit_scale, device,
 
 @torch.no_grad()
 def predict(model, loader, prototypes, logit_scale, device):
-    """Return (y_true[N,L], y_score[N,L]) with sigmoid probabilities."""
+    """Return (y_true[N,L], y_score[N,L]).
+
+    y_score is the RAW logit (scaled cosine similarity), not sigmoid. AUROC/AUPRC
+    only need a monotonic ranking score, and the large CLIP logit_scale (~100)
+    saturates sigmoid to exactly 1.0 in float32 -> constant probs -> AUROC 0.5.
+    Raw logits rank correctly and avoid that.
+    """
     model.eval()
     ys, ps = [], []
     for x, y in loader:
         x = x.to(device)
         logits = image_logits(model, x, prototypes, logit_scale)
-        ps.append(torch.sigmoid(logits).cpu().numpy())
+        ps.append(logits.cpu().numpy())
         ys.append(y.numpy())
     return np.concatenate(ys), np.concatenate(ps)
 
